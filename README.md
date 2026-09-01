@@ -1,6 +1,6 @@
-# Competition Repository Template v0.1.2
+# Competition Workspace Factory v0.2.0
 
-这是一个**真实比赛项目仓库模板**。它不负责告诉队伍“第几小时必须做什么”，也不内置固定的 Q1→Q2→Q3→Q4 流程。
+这是一个**比赛 Workspace Factory + 正式 Competition Repo 模板**。正式 Repo 结构保持兼容，同时新增可选 Selection Workspace，用于多题/多路线尚未确定时的临时探索。它不负责告诉队伍“第几小时必须做什么”，也不内置固定的 Q1→Q2→Q3→Q4 流程。
 
 它只解决四件事：
 
@@ -22,7 +22,26 @@
 - `paper/` 提供 Word/Markdown 与 LaTeX 两条生产线，但**实际比赛只维护一条 active track**。
 
 
-## v0.1.2：赛题导入与硬约束 preflight
+
+## v0.2.0：Selection Workspace + Formal Competition Repo
+
+现在区分：`Selection Workspace`（临时探索，不是事实源）与 `Competition Repo`（正式唯一事实源）。已明确唯一赛题时可完全跳过 Selection。
+
+创建临时 workspace：
+
+```bash
+python scripts/new_selection_workspace.py --output ../selection-2026 --candidate A --candidate B --candidate C
+```
+
+选题后先建立正式 Competition Repo，再归档选择证据：
+
+```bash
+python scripts/promote_selection.py --selection ../selection-2026 --repo /path/to/competition-repo
+```
+
+该命令不会改写 `problem/FACTS.md`。Selection 不是固定 Stage；route-level blocker 才需要重开。
+
+## 赛题导入与硬约束 preflight
 
 端到端演练暴露出普通 DOCX 文本抽取可能漏掉文本框/对象中的关键范围，因此模板新增 `scripts/contest_import.py`。它负责**辅助建立事实基线**：复制原始文件、计算 SHA-256、从 PDF/DOCX/TXT/MD 提取文本、识别数字/范围/单位候选，并对低文本页面或 DOCX 多通道抽取差异给出人工复核提醒。
 
@@ -34,7 +53,7 @@ python scripts/contest_import.py --statement /path/problem.docx --data /path/att
 
 生成：`problem/SOURCE_MANIFEST.csv`、`problem/PREFLIGHT_REPORT.md` 和可选 `_preflight_render/`。
 
-## 开赛时怎么用
+## 已确定单一赛题时怎么用
 
 1. 复制本模板并初始化 Git。
 2. 将原题和附件放入 `problem/statement/`、`data/raw/`，原始文件保持只读。
@@ -120,7 +139,7 @@ Coach 的职责是根据当前状态判断“现在最值得处理什么”，�
 当届官方规则始终高于本模板。
 
 
-## v0.1.2：官方规则与正式支撑材料闭环
+## 官方规则与正式支撑材料闭环
 
 新增 `rules/`，把当届官方规则作为独立事实层：`OFFICIAL_RULES.md` 面向人，`RULE_PROFILE.json` 只做机械检查。规则核验可以与科学工作并行，但未核验时不得判提交就绪。
 

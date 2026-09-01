@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.2
+## 0.2.0
 
 - 新增当前届次 `rules/` 事实层和 submission-only validator。
 - 官方规则未核验不阻塞科学工作，但硬阻止 submission-ready。

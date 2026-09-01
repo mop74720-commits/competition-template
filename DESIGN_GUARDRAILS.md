@@ -58,3 +58,12 @@
 ## 11. AI disclosure is evidence
 
 AI 使用记录不得为了合规而事后补造。若官方要求模型版本、关键交互或人工核验，而历史证据缺失，应明确记录为 blocker。
+
+
+## 12. Selection is exploratory; Competition Repo is formal
+
+Selection Workspace 允许临时假设、失败 probe 和候选路线，但不是正式事实源。不得自动把 selection 猜测写入 `problem/FACTS.md`。
+
+## 13. Information gain over exhaustive scoring
+
+多题选择优先验证最可能改变选择的决定性未知。固定 0–5 权重、固定分差、固定 Day-One gate 只能作为启发，不能成为模板门槛。
