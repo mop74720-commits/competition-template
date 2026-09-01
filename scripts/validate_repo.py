@@ -36,6 +36,12 @@ def main():
         rp = r.get("result_path", "").strip()
         if rp and not (ROOT / rp).exists(): warnings.append(f"FINAL result path missing: {rp}")
 
+    source_manifest = load_csv(ROOT / "problem/SOURCE_MANIFEST.csv")
+    for r in source_manifest:
+        rel=(r.get("relative_path") or "").strip()
+        if rel and not Path(rel).is_absolute() and not (ROOT/rel).exists():
+            warnings.append(f"source manifest path missing: {rel}")
+
     claims = load_csv(ROOT / "audit/CLAIM_EVIDENCE_MAP.csv")
     for r in claims:
         status = (r.get("status") or "").strip().lower()

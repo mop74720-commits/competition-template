@@ -45,3 +45,7 @@
 ## 8. The template serves humans first
 
 如果某个自动化设计让队员必须维护大量 YAML/状态码才能继续比赛，应优先删掉或降级它。
+
+## 9. Preflight is evidence assistance, not a new stage
+
+赛题导入、hash、文本抽取、页面渲染和数字/范围候选扫描用于降低漏读硬约束的风险。它们不能自动宣布“读题完成”，也不能把未人工核对的候选直接升级为 FACT。

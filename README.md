@@ -1,4 +1,4 @@
-# Competition Repository Template v0.1.0
+# Competition Repository Template v0.1.1
 
 这是一个**真实比赛项目仓库模板**。它不负责告诉队伍“第几小时必须做什么”，也不内置固定的 Q1→Q2→Q3→Q4 流程。
 
@@ -20,6 +20,19 @@
 - `results/` / `figures/` 保存可被论文引用的结果。
 - `audit/` 保存为什么这样做、论文主张由什么支撑。
 - `paper/` 提供 Word/Markdown 与 LaTeX 两条生产线，但**实际比赛只维护一条 active track**。
+
+
+## v0.1.1：赛题导入与硬约束 preflight
+
+2020C 演练暴露出普通 DOCX 文本抽取可能漏掉文本框/对象中的关键范围，因此模板新增 `scripts/contest_import.py`。它负责**辅助建立事实基线**：复制原始文件、计算 SHA-256、从 PDF/DOCX/TXT/MD 提取文本、识别数字/范围/单位候选，并对低文本页面或 DOCX 多通道抽取差异给出人工复核提醒。
+
+它不是新的 Gate，也不会自动把候选写成正式 FACT。
+
+```bash
+python scripts/contest_import.py --statement /path/problem.docx --data /path/attach.xlsx --render
+```
+
+生成：`problem/SOURCE_MANIFEST.csv`、`problem/PREFLIGHT_REPORT.md` 和可选 `_preflight_render/`。
 
 ## 开赛时怎么用
 
