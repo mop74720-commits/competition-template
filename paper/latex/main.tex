@@ -1,0 +1,24 @@
+\documentclass[UTF8,a4paper,12pt]{ctexart}
+\usepackage{amsmath,amssymb,booktabs,graphicx,geometry,hyperref}
+\geometry{margin=2.5cm}
+\graphicspath{{../../figures/final/}{../../figures/draft/}}
+
+\title{数学建模论文草稿}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\input{sections/abstract}
+\input{sections/problem_analysis}
+\input{sections/assumptions}
+\input{sections/notations}
+
+% 按实际问题数量手动或通过 scripts/add_question.py 增加：
+% \input{sections/questions/q1}
+
+\input{sections/model_evaluation}
+\input{sections/conclusion}
+\input{sections/ai_statement}
+\input{sections/appendix}
+\end{document}

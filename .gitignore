@@ -1,0 +1,40 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+~$*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# MATLAB
+*.asv
+slprj/
+
+# LaTeX build
+paper/latex/build/*
+!paper/latex/build/.gitkeep
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Generated Office/PDF previews
+paper/word/rendered/
+*.bak
+
+# Large transient artifacts
+runs/*/tmp/
+cache/
