@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, csv
+import argparse, csv, json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +13,7 @@ def load_csv(path: Path):
 def main():
     ap = argparse.ArgumentParser(description="Lightweight repository consistency check. Warnings are advisory unless --strict.")
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--pre-submission", action="store_true", help="also require verified current official rules")
     args = ap.parse_args()
     warnings, errors = [], []
 
@@ -51,6 +52,18 @@ def main():
             warnings.append(f"claim without evidence_path: {r.get('claim_id','?')}")
         if ev and not (ROOT / ev).exists():
             warnings.append(f"claim evidence path missing: {ev}")
+
+    if args.pre_submission:
+        rp=ROOT/"rules/RULE_PROFILE.json"
+        try: prof=json.loads(rp.read_text(encoding="utf-8"))
+        except Exception: prof=None
+        if not prof or not prof.get("verified"):
+            errors.append("pre-submission: official rules not verified")
+        elif not prof.get("sources"):
+            errors.append("pre-submission: official rule sources missing")
+        else:
+            for u in prof.get("blocking_unknowns") or []:
+                errors.append("pre-submission: blocking rule/compliance unknown: " + str(u))
 
     print(f"errors={len(errors)} warnings={len(warnings)}")
     for x in errors: print("ERROR", x)

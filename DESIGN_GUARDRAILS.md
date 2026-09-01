@@ -49,3 +49,12 @@
 ## 9. Preflight is evidence assistance, not a new stage
 
 赛题导入、hash、文本抽取、页面渲染和数字/范围候选扫描用于降低漏读硬约束的风险。它们不能自动宣布“读题完成”，也不能把未人工核对的候选直接升级为 FACT。
+
+
+## 10. Official rules may block submission, not exploration
+
+当前届次官方规则是一级事实。规则未核验时，队伍仍可继续读题、建模、实现和验证，但不得宣称 `SUBMISSION_READY`。规则 profile 只是官方全文的机器伴随索引，不得反过来成为繁琐流程。
+
+## 11. AI disclosure is evidence
+
+AI 使用记录不得为了合规而事后补造。若官方要求模型版本、关键交互或人工核验，而历史证据缺失，应明确记录为 blocker。

@@ -1,0 +1,38 @@
+{
+  "schema": "mathmodel-competition-rules/v1",
+  "contest": "",
+  "season": "",
+  "region": "",
+  "verified": false,
+  "verified_at": "",
+  "sources": [],
+  "requirements": {
+    "paper": {
+      "allowed_extensions": [],
+      "max_size_mb": null,
+      "appendix_source_code_required": null,
+      "page_size": null
+    },
+    "support": {
+      "required": null,
+      "allowed_extensions": [
+        ".zip",
+        ".rar"
+      ],
+      "max_size_mb": null,
+      "source_code_required": null
+    },
+    "ai": {
+      "policy_status": "UNKNOWN",
+      "ai_used": null,
+      "paper_disclosure_required": null,
+      "reference_entry_required": null,
+      "details_pdf_required": null,
+      "details_filename": ""
+    }
+  },
+  "unknowns": [
+    "Current official rules have not yet been verified."
+  ],
+  "blocking_unknowns": []
+}

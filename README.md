@@ -1,4 +1,4 @@
-# Competition Repository Template v0.1.1
+# Competition Repository Template v0.1.2
 
 这是一个**真实比赛项目仓库模板**。它不负责告诉队伍“第几小时必须做什么”，也不内置固定的 Q1→Q2→Q3→Q4 流程。
 
@@ -22,9 +22,9 @@
 - `paper/` 提供 Word/Markdown 与 LaTeX 两条生产线，但**实际比赛只维护一条 active track**。
 
 
-## v0.1.1：赛题导入与硬约束 preflight
+## v0.1.2：赛题导入与硬约束 preflight
 
-2020C 演练暴露出普通 DOCX 文本抽取可能漏掉文本框/对象中的关键范围，因此模板新增 `scripts/contest_import.py`。它负责**辅助建立事实基线**：复制原始文件、计算 SHA-256、从 PDF/DOCX/TXT/MD 提取文本、识别数字/范围/单位候选，并对低文本页面或 DOCX 多通道抽取差异给出人工复核提醒。
+端到端演练暴露出普通 DOCX 文本抽取可能漏掉文本框/对象中的关键范围，因此模板新增 `scripts/contest_import.py`。它负责**辅助建立事实基线**：复制原始文件、计算 SHA-256、从 PDF/DOCX/TXT/MD 提取文本、识别数字/范围/单位候选，并对低文本页面或 DOCX 多通道抽取差异给出人工复核提醒。
 
 它不是新的 Gate，也不会自动把候选写成正式 FACT。
 
@@ -118,3 +118,23 @@ Coach 的职责是根据当前状态判断“现在最值得处理什么”，�
 - 没有 Reviewer/Subagent 就阻塞整个比赛。
 
 当届官方规则始终高于本模板。
+
+
+## v0.1.2：官方规则与正式支撑材料闭环
+
+新增 `rules/`，把当届官方规则作为独立事实层：`OFFICIAL_RULES.md` 面向人，`RULE_PROFILE.json` 只做机械检查。规则核验可以与科学工作并行，但未核验时不得判提交就绪。
+
+新增：
+
+- `scripts/validate_submission.py`：只在提交前执行的硬规则检查；
+- `scripts/build_support.py`：显式构建支撑材料 ZIP，并生成 `audit/SUPPORT_MANIFEST.csv`；
+- `audit/SUBMISSION_MANIFEST.csv`：冻结最终提交物；
+- `ai/AI_USAGE_DETAILS_TEMPLATE.md`：从真实 AI 日志生成详情，不允许补造；
+- Final Check 对官方规则、AI 披露、论文附录源程序、独立支撑包进行一致性检查。
+
+这不是新的竞赛阶段，也不要求队员平时维护复杂状态。
+
+
+### Submission hard-stop semantics
+
+`rules/RULE_PROFILE.json` 可区分普通 `unknowns` 与影响提交资格的 `blocking_unknowns`。后者不会阻塞继续建模，但 `validate_submission.py` 必须返回 ERROR；不得通过删除未知事实来伪造 green check。规则 profile 若声明 `page_size`, `first_page_abstract`, `source_code_required` 或 AI 详情要求，submission validator 会执行相应机械检查。

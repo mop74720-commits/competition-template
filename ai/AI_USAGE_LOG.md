@@ -1,8 +1,8 @@
 # AI USAGE LOG
 
-> 是否需要提交、提交到什么程度，以当届官方规则为准。这里主要用于队内留痕和人工核验。
+> 用于保存**重大且可能需要披露的 AI 介入证据**。不要求记录每个普通问答，但记录粒度必须足以满足当前届次官方规则。
 >
-> 只记录**重大 AI 介入**：例如模型方向改变、关键代码/实验生成、重要审查结论、正文大段生成/改写。不要记录每次 Skill 调用或普通问答，以免把留痕变成流程负担。
+> 不得事后猜测工具版本、日期、关键交互或人工核验。无法恢复的信息明确写 `UNKNOWN`，并在提交前处理。
 
-| Time | Tool/Model | Task | Input summary | Output used | Human verification | Files affected |
-|---|---|---|---|---|---|---|
+| Time | Tool | Model/version | Task/phase | Prompt / input summary | Output adopted | Human modification / verification | Interaction record | Files affected |
+|---|---|---|---|---|---|---|---|---|
