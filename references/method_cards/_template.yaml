@@ -1,0 +1,19 @@
+card_id: MC-001
+source:
+  title: ""
+  authors: []
+  year: null
+  doi_or_url: ""
+evidence_level: METADATA_ONLY # FULLTEXT_VERIFIED | ABSTRACT_ONLY | METADATA_ONLY
+problem_structure: ""
+method: ""
+assumptions: []
+required_data: []
+transferable_parts: []
+non_transferable_parts: []
+failure_modes: []
+validation_pattern: []
+evidence_locator: []
+decision_role: CANDIDATE_PRIOR # CANDIDATE_PRIOR | PROBE_HINT | VALIDATION_PATTERN | BACKGROUND_ONLY | REJECT_FOR_CURRENT_TASK
+current_task_status: CANDIDATE # CANDIDATE | ADAPTED | ADOPTED | REJECTED
+reason: ""
