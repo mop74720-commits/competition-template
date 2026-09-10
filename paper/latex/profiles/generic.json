@@ -1,0 +1,9 @@
+{
+  "name": "generic",
+  "description": "Repository default: generic Chinese paper based on paper/latex/main.tex.",
+  "entrypoint": "main.tex",
+  "engine": "xelatex",
+  "required_files": [
+    "main.tex"
+  ]
+}

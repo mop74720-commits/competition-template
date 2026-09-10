@@ -1,0 +1,9 @@
+{
+  "name": "cumcm-current",
+  "description": "Example adapter contract for the current official CUMCM template. Copy/rename only after verifying the current-year official files.",
+  "entrypoint": "profiles/cumcm-current/main.tex",
+  "engine": "xelatex",
+  "required_files": [
+    "profiles/cumcm-current/main.tex"
+  ]
+}

@@ -3,6 +3,23 @@
 \geometry{margin=2.5cm}
 \graphicspath{{../../figures/final/}{../../figures/draft/}}
 
+% build.py 会在包装入口中定义 \PaperBuildMode。
+% 直接运行 main.tex 时默认按 draft 处理。
+\providecommand{\PaperBuildMode}{draft}
+\def\PaperModeReview{review}
+\def\PaperModeRelease{release}
+\def\PaperModePrint{print}
+
+\ifx\PaperBuildMode\PaperModeReview
+  \overfullrule=5pt
+\fi
+\ifx\PaperBuildMode\PaperModeRelease
+  \hypersetup{hidelinks}
+\fi
+\ifx\PaperBuildMode\PaperModePrint
+  \hypersetup{hidelinks}
+\fi
+
 \title{数学建模论文草稿}
 \author{}
 \date{}
@@ -19,6 +36,14 @@
 
 \input{sections/model_evaluation}
 \input{sections/conclusion}
+
+% 可选 BibTeX 数据库。没有 references.bib 时不会强制生成参考文献。
+% 若改用 biblatex/biber，build.py 会根据 .bcf 自动切换到 biber。
+\IfFileExists{references.bib}{
+  \bibliographystyle{plain}
+  \bibliography{references}
+}{}
+
 \input{sections/ai_statement}
 \input{sections/appendix}
 \end{document}

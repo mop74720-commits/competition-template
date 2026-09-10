@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.1
+
+### Paper production hardening
+
+- 新增 `paper/latex/build.py`，将 Linux / Windows 的论文构建统一到同一条可验证流水线。
+- 构建目标扩展为 `draft`、`review`、`release`、`print`、`all` 与 `clean`。
+- LaTeX 构建启用 `-halt-on-error`、`-file-line-error` 和超时控制；失败时不会留下新的“假成功”提交 PDF。
+- 自动识别 BibTeX / Biber 需求；有参考文献时执行完整的多遍编译链。
+- 新增轻量 `profiles/` 适配层。默认 `generic` profile 保持现有通用 `ctexart` 入口；当届 CUMCM 官方模板通过独立 profile/entrypoint 接入，不把历史第三方 `.cls` 永久写死。
+- `review` 构建显示 overfull box 标记；`release` / `print` 隐藏超链接样式。
+- `main.tex` 支持可选 `references.bib`，不存在时不强制参考文献步骤。
+- 明确格式 profile 只是论文生产适配层；当届官方规则与 `rules/` 事实层仍拥有最高优先级。
+
 ## 0.2.0
 
 - 新增当前届次 `rules/` 事实层和 submission-only validator。
